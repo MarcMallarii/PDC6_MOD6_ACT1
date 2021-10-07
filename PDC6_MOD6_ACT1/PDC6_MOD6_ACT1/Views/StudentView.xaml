@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PDC6_MOD6_ACT1.Views.StudentView">
+    <ContentPage.Content>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" VerticalOptions="Start">
+                <Label Text="Student Information" FontAttributes="Bold" FontSize="Title" TextColor="Black"/>
+
+                <Entry Text="{Binding studentId}" Placeholder="Name"/>
+                <Entry Text="{Binding studentName}" Placeholder="Name"/>
+                <Entry Text="{Binding course}" Placeholder="Course"/>
+                <Entry Text="{Binding yearLevel}" Placeholder="Year Level"/>
+                <Entry Text="{Binding section}" Placeholder="Section"/>
+
+                <Button WidthRequest="150" Text="Add" Command="{Binding AddStudentCommand}"/>
+            </StackLayout>
+
+            <ListView Grid.Row="1" 
+                      x:Name="lstStudent"
+                      ItemTapped="OnItemSelected"
+                      ItemsSource="{Binding Students}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding studentId}"/>
+                                <Label Text="{Binding studentName}"/>
+                                <Label Text="{Binding course}"/>
+                                <Label Text="{Binding yearLevel}"/>
+                                <Label Text="{Binding section}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
